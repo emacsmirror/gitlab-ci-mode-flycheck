@@ -2,23 +2,37 @@
 ;;
 ;; Copyright 2018 Joe Wreschnig
 ;;
+;; Author: Joe Wreschnig
+;; Keywords: tools, vc, convenience
+;; Package-Requires: ((emacs "25") (gitlab-ci-mode "20180303"))
+;; Package-Version: 0
+;; URL: https://gitlab.com/joewreschnig/gitlab-ci-mode-flycheck/
+;;
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
 ;; the Free Software Foundation, either version 3 of the License, or
 ;; (at your option) any later version.
+;;
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 ;;; Commentary:
 ;;
-;; Implement Flycheck support for ‘gitlab-ci-mode’.  For security
-;; reasons, this checker is not enabled by default.  To enable it, call
-;; ‘gitlab-ci-mode-flycheck-enable’.
+;; Flycheck integration for the linter included with ‘gitlab-ci-mode’.
+;; For security reasons, this checker is not enabled by default.  To
+;; enable it, call ‘gitlab-ci-mode-flycheck-enable’.
 
 
 ;;; Code:
 
 (require 'flycheck)
-(require 'gitlab-ci-mode-lint)
+(require 'gitlab-ci-mode)
 
 (flycheck-define-generic-checker 'gitlab-ci
   "Lint GitLab CI configuration files.

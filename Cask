@@ -1,9 +1,10 @@
 (source melpa)
 
-(package-file "gitlab-ci-mode.el")
+(package-file "gitlab-ci-mode-flycheck.el")
 
-(depends-on "yaml-mode" "0.0.12")
+(depends-on "gitlab-ci-mode"
+            :git "https://gitlab.com/joewreschnig/gitlab-ci-mode.git")
+(depends-on "flycheck" "31")
 
 (development
- (depends-on "package-lint")
- (depends-on "flycheck"))
+ (depends-on "package-lint"))

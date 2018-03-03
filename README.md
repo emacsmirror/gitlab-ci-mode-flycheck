@@ -1,19 +1,15 @@
-# gitlab-ci-mode
+# gitlab-ci-mode-flycheck
 
-[![pipeline status](https://gitlab.com/joewreschnig/gitlab-ci-mode/badges/master/pipeline.svg)](https://gitlab.com/joewreschnig/gitlab-ci-mode/commits/master)
+[![pipeline status](https://gitlab.com/joewreschnig/gitlab-ci-mode-flycheck/badges/master/pipeline.svg)](https://gitlab.com/joewreschnig/gitlab-ci-mode-flycheck/commits/master)
 
 
-`gitlab-ci-mode` is an Emacs major mode for editing [GitLab CI files][].
-It provides syntax highlighting and completion for keywords and special
-variables.
+`gitlab-ci-mode-flycheck` provides [Flycheck][] integration for the
+ linter included with [`gitlab-ci-mode`][gitlab-ci-mode]. For security
+ reasons, this checker is not enabled by default. To enable it, call
+ `gitlab-ci-mode-flycheck-enable`.
 
-An interface to the [GitLab CI linter][] is also provided via
-`gitlab-ci-lint`, and also as a [Flycheck][] checker with
-`gitlab-ci-mode-flycheck-enable`.
-
-[Flycheck]: http://www.flycheck.org/en/latest/
-[GitLab CI files]: https://docs.gitlab.com/ce/ci/yaml/README.html
-[GitLab CI linter]: https://docs.gitlab.com/ce/api/lint.html
+[Flycheck]: http://www.flycheck.org/
+[gitlab-ci-mode]: https://gitlab.com/joewreschnig/gitlab-ci-mod
 
 
 ## License
