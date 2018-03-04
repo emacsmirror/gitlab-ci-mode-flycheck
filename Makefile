@@ -8,7 +8,7 @@ OBJ := $(SRC:.el=.elc)
 
 all: $(OBJ)
 
-.cask/stamp: Cask
+.cask/stamp: Cask $(SRC)
 	$(CASK) install
 	touch $@
 
