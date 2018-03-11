@@ -1,6 +1,6 @@
 # gitlab-ci-mode-flycheck
 
-[![pipeline status](https://gitlab.com/joewreschnig/gitlab-ci-mode-flycheck/badges/master/pipeline.svg)](https://gitlab.com/joewreschnig/gitlab-ci-mode-flycheck/commits/master)
+[![pipeline status](https://gitlab.com/joewreschnig/gitlab-ci-mode-flycheck/badges/master/pipeline.svg)](https://gitlab.com/joewreschnig/gitlab-ci-mode-flycheck/commits/master) [![MELPA Stable](http://stable.melpa.org/packages/gitlab-ci-mode-flycheck-badge.svg)](http://stable.melpa.org/#/gitlab-ci-mode-flycheck) [![MELPA](http://melpa.org/packages/gitlab-ci-mode-flycheck-badge.svg)](http://melpa.org/#/gitlab-ci-mode-flycheck)
 
 
 `gitlab-ci-mode-flycheck` provides [Flycheck][] integration for the
