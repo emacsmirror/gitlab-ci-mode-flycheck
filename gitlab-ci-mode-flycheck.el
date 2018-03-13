@@ -34,7 +34,7 @@
 (require 'flycheck)
 (require 'gitlab-ci-mode)
 
-(defun gitlab-ci-mode-flycheck-goto-path (path)
+(defun gitlab-ci-mode-flycheck--goto-path (path)
   "Go to the YAML key described by a “:”-separated PATH string.
 
 If the full path could not be resolved, go to the last element
@@ -49,23 +49,23 @@ which could be found."
           (goto-char (match-beginning 2))))
     (search-failed nil)))
 
-(defun gitlab-ci-mode-flycheck-line-for-message (message)
+(defun gitlab-ci-mode-flycheck--line-for-message (message)
   "Try figure out the line number described by MESSAGE.
 
 If the full key in the message could not be found, attribute the
 error to the last element which could be found."
   (cond ((string-match
           "\\(?:jobs:\\)?\\([^ ]+\\) .* keys: \\([^ ]+\\)" message)
-         (gitlab-ci-mode-flycheck-goto-path
+         (gitlab-ci-mode-flycheck--goto-path
           (concat (match-string 1 message) ":" (match-string 2 message))))
         ((string-match "\\(?:jobs:\\)?\\([^ ]+\\) config" message)
-         (gitlab-ci-mode-flycheck-goto-path (match-string 1 message)))
+         (gitlab-ci-mode-flycheck--goto-path (match-string 1 message)))
         ((string-match "jobs:\\([^ ]+\\)" message)
-         (gitlab-ci-mode-flycheck-goto-path (match-string 1 message)))
+         (gitlab-ci-mode-flycheck--goto-path (match-string 1 message)))
         (t (goto-char 0)))
   (line-number-at-pos))
 
-(defun gitlab-ci-mode-flycheck-errors-filter (errors)
+(defun gitlab-ci-mode-flycheck--errors-filter (errors)
   "Fix up the line numbers of each error in ERRORS, if necessary."
   (dolist (err errors)
     (unless (flycheck-error-line err)
@@ -75,7 +75,7 @@ error to the last element which could be found."
                     (save-restriction
                       (save-mark-and-excursion
                        (widen)
-                       (gitlab-ci-mode-flycheck-line-for-message message)))))
+                       (gitlab-ci-mode-flycheck--line-for-message message)))))
                   0))))
   errors)
 
@@ -108,7 +108,7 @@ YAML features such as references, tags, or unusual indentation."
            (alist-get 'errors data)))))
      :silent))
 
-  :error-filter #'gitlab-ci-mode-flycheck-errors-filter
+  :error-filter #'gitlab-ci-mode-flycheck--errors-filter
 
   :modes '(gitlab-ci-mode))
 
