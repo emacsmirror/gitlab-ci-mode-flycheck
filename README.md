@@ -4,12 +4,22 @@
 
 
 `gitlab-ci-mode-flycheck` provides [Flycheck][] integration for the
- linter included with [`gitlab-ci-mode`][gitlab-ci-mode]. For security
- reasons, this checker is not enabled by default. To enable it, call
- `gitlab-ci-mode-flycheck-enable`.
+linter included with [`gitlab-ci-mode`][gitlab-ci-mode]. For security
+reasons, this checker is not enabled by default. To enable it, call
+`gitlab-ci-mode-flycheck-enable`. A recommended deferred [use-package][]
+stanza is:
+
+```elisp
+(use-package gitlab-ci-mode-flycheck
+  :after flycheck gitlab-ci-mode
+  :init
+  (gitlab-ci-mode-flycheck-enable))
+```
+
 
 [Flycheck]: http://www.flycheck.org/
 [gitlab-ci-mode]: https://gitlab.com/joewreschnig/gitlab-ci-mod
+[use-package]: https://github.com/jwiegley/use-package
 
 
 ## License
