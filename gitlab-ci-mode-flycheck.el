@@ -46,7 +46,7 @@ which could be found."
           (re-search-forward
            (concat "\\(" prefix "\\)\\<\\(" key "\\)\\> *:"))
           (setq prefix (concat (match-string 1) " +"))
-          (goto-char (match-beginning 2))))
+          (goto-char (match-end 2))))
     (search-failed nil)))
 
 (defun gitlab-ci-mode-flycheck--line-for-message (message)
@@ -68,15 +68,15 @@ error to the last element which could be found."
 (defun gitlab-ci-mode-flycheck--errors-filter (errors)
   "Fix up the line numbers of each error in ERRORS, if necessary."
   (dolist (err errors)
-    (unless (flycheck-error-line err)
-      (setf (flycheck-error-line err)
-            (or (when-let (message (flycheck-error-message err))
-                  (flycheck-error-with-buffer err
-                    (save-restriction
-                      (save-mark-and-excursion
-                       (widen)
-                       (gitlab-ci-mode-flycheck--line-for-message message)))))
-                  0))))
+    (when (and (not (flycheck-error-line err)) (flycheck-error-message err))
+      (flycheck-error-with-buffer err
+        (save-restriction
+          (save-mark-and-excursion
+           (widen)
+           (gitlab-ci-mode-flycheck--line-for-message
+            (flycheck-error-message err))
+           (setf (flycheck-error-line err) (line-number-at-pos)
+                 (flycheck-error-column err) (current-column)))))))
   errors)
 
 (flycheck-define-generic-checker 'gitlab-ci
