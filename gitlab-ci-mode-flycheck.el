@@ -5,7 +5,7 @@
 ;; Author: Joe Wreschnig
 ;; Keywords: tools, vc, convenience
 ;; Package-Requires: ((emacs "25") (flycheck "31") (gitlab-ci-mode "1"))
-;; Package-Version: 20180304.1
+;; Package-Version: 20180605.1
 ;; URL: https://gitlab.com/joewreschnig/gitlab-ci-mode-flycheck/
 ;;
 ;; This program is free software; you can redistribute it and/or modify
